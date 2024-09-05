@@ -157,7 +157,14 @@ void  solve(const eq_term &t1, const eq_term &t2, const eq_term &t3)
     float delta = t2.coefficent * t2.coefficent - 4 * t1.coefficent * t3.coefficent;
     if (delta < 0)
     {
-      std::cout << "Can't solve this equation in R: discriminant < 0" << std::endl;
+      float sq_delta = sqrt(abs(delta));
+      float x1_r = (-t2.coefficent) / (2 * t1.coefficent);
+      float x1_i = (sq_delta) / (2 * t1.coefficent);
+      float x2_r = (-t2.coefficent) / (2 * t1.coefficent);
+      float x2_i = (- sq_delta) / (2 * t1.coefficent);
+      std::cout << "Discriminant is strictly negative, the two solutions in C are:" << std::endl;
+      std::cout << x1_r << ((x1_i > 0) ? "+" : "") << x1_i << "i" << std::endl;
+      std::cout << x2_r << ((x2_i > 0) ? "+" : "") << x2_i << "i" << std::endl;
     }
     else if (delta > 0)
     {
